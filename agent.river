@@ -1,0 +1,12 @@
+pyroscope.ebpf "instance" {
+ forward_to     = [pyroscope.write.endpoint.receiver]
+ targets_only   = false
+ demangle = "full"
+ default_target = {"service_name" = "local"}
+}
+
+pyroscope.write "endpoint" {
+ endpoint {
+  url = "http://localhost:4040"
+ }
+}
